@@ -1,0 +1,92 @@
+[
+  {
+    "original": {
+      "text": "<bound method AttackResult.original_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8B7EEE70>>",
+      "prediction": 0,
+      "confidence": 0.8650017380714417
+    },
+    "attacked": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8B7EEE70>>",
+      "prediction": 0,
+      "confidence": 0.9097674489021301
+    },
+    "defended": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8B7EEE70>>",
+      "prediction": 0,
+      "confidence": 0.9097674489021301,
+      "changes": []
+    }
+  },
+  {
+    "original": {
+      "text": "<bound method AttackResult.original_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8853E6F0>>",
+      "prediction": 0,
+      "confidence": 0.8711252808570862
+    },
+    "attacked": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8853E6F0>>",
+      "prediction": 0,
+      "confidence": 0.9161621928215027
+    },
+    "defended": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C8853E6F0>>",
+      "prediction": 0,
+      "confidence": 0.9161621928215027,
+      "changes": []
+    }
+  },
+  {
+    "original": {
+      "text": "<bound method AttackResult.original_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C960005C0>>",
+      "prediction": 0,
+      "confidence": 0.877500593662262
+    },
+    "attacked": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C960005C0>>",
+      "prediction": 0,
+      "confidence": 0.9197161793708801
+    },
+    "defended": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C960005C0>>",
+      "prediction": 0,
+      "confidence": 0.9197161793708801,
+      "changes": []
+    }
+  },
+  {
+    "original": {
+      "text": "<bound method AttackResult.original_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024CA583BE30>>",
+      "prediction": 0,
+      "confidence": 0.8670836091041565
+    },
+    "attacked": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024CA583BE30>>",
+      "prediction": 0,
+      "confidence": 0.9093379378318787
+    },
+    "defended": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024CA583BE30>>",
+      "prediction": 0,
+      "confidence": 0.9093379378318787,
+      "changes": []
+    }
+  },
+  {
+    "original": {
+      "text": "<bound method AttackResult.original_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C95A82D80>>",
+      "prediction": 0,
+      "confidence": 0.8587085604667664
+    },
+    "attacked": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C95A82D80>>",
+      "prediction": 0,
+      "confidence": 0.9071337580680847
+    },
+    "defended": {
+      "text": "<bound method AttackResult.perturbed_text of <textattack.attack_results.successful_attack_result.SuccessfulAttackResult object at 0x0000024C95A82D80>>",
+      "prediction": 0,
+      "confidence": 0.9071337580680847,
+      "changes": []
+    }
+  }
+]
