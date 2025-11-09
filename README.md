@@ -1,8 +1,7 @@
-🧠 Robustness Testing for NLP Models
-
+🧠 **Robustness Testing for NLP Models**
 This project focuses on evaluating and improving the robustness of NLP models (BERT and RoBERTa) against adversarial attacks. It implements TextFooler for generating adversarial examples and explores defense strategies such as spell correction and synonym-based recovery to restore performance.
 
-🚀 Overview
+🚀**Overview**
 
 The goal is to analyze how NLP models react to adversarial perturbations and to build defenses that enhance model reliability.
 
@@ -14,7 +13,7 @@ Defenses: Applying linguistic corrections (spell-check and synonym replacement).
 
 Evaluation: Comparing model accuracy and F1 score before, during, and after attacks.
 
-🏗️ Project Structure
+🏗️ **Project Structure**
 Robustness-Testing---NLP/
 │
 ├── bert_attack.py               # TextFooler attack on BERT
@@ -24,7 +23,7 @@ Robustness-Testing---NLP/
 ├── results/                     # Stores checkpoints, logs, and outputs
 └── plots/                       # Generated plots for metrics and confusion matrices
 
-🧩 Models Used
+🧩 **Models Used**
 Model	Source	Task
 BERT	bert-base-uncased	Binary Sentiment Classification
 RoBERTa	textattack/roberta-base-SST-2	Sentiment Classification (GLUE SST-2)
@@ -33,12 +32,12 @@ RoBERTa	textattack/roberta-base-SST-2	Sentiment Classification (GLUE SST-2)
 TextFooler (Jin et al., 2019):
 Substitutes important words with semantically similar words that mislead model predictions.
 
-🛡️ Defense Strategies
+🛡️ **Defense Strategies**
 Defense	Description
 Spell Correction	Corrects words altered by adversarial attacks using dictionary-based correction.
 Synonym Replacement	Replaces unknown or adversarial words with their most common WordNet synonym.
 Combined Defense	Integrates both spell correction and synonym recovery.
-📦 Requirements
+📦 **Requirements**
 torch
 transformers
 textattack
@@ -70,7 +69,7 @@ or directly run the main function:
 
 python roberta_defense.py
 
-📊 Evaluation Metrics
+📊 **Evaluation Metrics**
 Stage	Description	Metrics
 Original	Model on clean text	Accuracy, F1 Score
 Attacked	Model under adversarial perturbations	Accuracy drop
@@ -82,7 +81,7 @@ Visualizations (saved under /plots):
 
 🔲 Confusion matrices for each stage
 
-🧪 Sample Results
+🧪 **Sample Results**
 Model	Stage	Accuracy	F1 Score
 BERT	Original	94.5%	0.94
 BERT	Attacked	62.3%	0.59
@@ -93,7 +92,7 @@ RoBERTa	Defended	87.2%	0.85
 
 (Values illustrative — update with your actual results.)
 
-🧰 Logging & Outputs
+🧰 **Logging & Outputs**
 
 Logs: saved in attack_defense.log
 
@@ -103,7 +102,7 @@ Detailed results: attack_results.csv
 
 Plots: saved under /plots/
 
-🧭 Future Work
+🧭 **Future Work**
 
 Expand to other attacks like DeepWordBug or BAE.
 
