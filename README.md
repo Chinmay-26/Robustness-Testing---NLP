@@ -1,66 +1,44 @@
-Robustness Testing in NLP — Adversarial Attack & Defense on Transformer Models
+🧠 Robustness Testing for NLP Models
 
-This project implements robustness testing for NLP models like BERT and RoBERTa, focusing on adversarial text attacks and defense strategies.
-It uses the TextFooler attack and applies various defense mechanisms (spell correction, synonym replacement, combined defenses) to evaluate how model accuracy changes before and after adversarial perturbations.
-📋 Overview
+This project focuses on evaluating and improving the robustness of NLP models (BERT and RoBERTa) against adversarial attacks. It implements TextFooler for generating adversarial examples and explores defense strategies such as spell correction and synonym-based recovery to restore performance.
 
-The project aims to:
+🚀 Overview
 
-Evaluate adversarial robustness of NLP classifiers.
+The goal is to analyze how NLP models react to adversarial perturbations and to build defenses that enhance model reliability.
 
-Test BERT and RoBERTa models against TextFooler attacks.
+This project performs:
 
-Implement and assess defense strategies to mitigate attack impact.
+Adversarial Attacks: Using TextFooler (Jin et al., 2019) to manipulate input sentences.
 
-Log, visualize, and analyze results for better interpretability.
+Defenses: Applying linguistic corrections (spell-check and synonym replacement).
 
-⚙️ Tech Stack
+Evaluation: Comparing model accuracy and F1 score before, during, and after attacks.
 
-Python 3.9+
+🏗️ Project Structure
+Robustness-Testing---NLP/
+│
+├── bert_attack.py               # TextFooler attack on BERT
+├── bert_defense.py              # Spell correction defense for BERT
+├── roberta_attack.py            # TextFooler attack on RoBERTa
+├── roberta_defense.py           # Combined synonym & spell defenses for RoBERTa
+├── results/                     # Stores checkpoints, logs, and outputs
+└── plots/                       # Generated plots for metrics and confusion matrices
 
-PyTorch
+🧩 Models Used
+Model	Source	Task
+BERT	bert-base-uncased	Binary Sentiment Classification
+RoBERTa	textattack/roberta-base-SST-2	Sentiment Classification (GLUE SST-2)
+⚔️ Attacks Implemented
 
-Hugging Face Transformers
+TextFooler (Jin et al., 2019):
+Substitutes important words with semantically similar words that mislead model predictions.
 
-TextAttack (for adversarial attacks)
-
-NLTK (for lexical and WordNet-based defenses)
-
-Scikit-learn, Pandas, Seaborn, Matplotlib
-
-📁 Repository Structure
-.
-├── checkpoints/                     # (Empty) Model checkpoints or intermediate saves
-├── logs/                            # Log files from attack & defense runs
-├── plots/                           # Saved performance and confusion matrix plots
-├── bert.py                          # BERT attack using TextFooler
-├── bertdef.py                       # BERT defense using spell correction
-├── roberta.py                       # RoBERTa robustness evaluation pipeline
-├── robdef.py                        # RoBERTa defense (synonym-based)
-├── attack_defense.log               # Logging output file
-├── attack_log.csv                   # Attack logs (generated)
-├── roberta_attack_results.csv       # Saved RoBERTa attack results
-├── roberta_attack_results.csv       # Saved results (generated)
-└── README.md
-
-🧩 Installation & Setup
-# Clone the repository
-git clone https://github.com/Chinmay-26/Robustness-Testing---NLP.git
-cd Robustness-Testing---NLP
-
-# (Optional) Create a virtual environment
-python -m venv venv
-# Activate:
-#   Windows: venv\Scripts\activate
-#   macOS/Linux: source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-🧠 Requirements
-
-requirements.txt (you can copy this into your repo):
-
+🛡️ Defense Strategies
+Defense	Description
+Spell Correction	Corrects words altered by adversarial attacks using dictionary-based correction.
+Synonym Replacement	Replaces unknown or adversarial words with their most common WordNet synonym.
+Combined Defense	Integrates both spell correction and synonym recovery.
+📦 Requirements
 torch
 transformers
 textattack
@@ -72,152 +50,63 @@ matplotlib
 seaborn
 pyspellchecker
 
-🚀 Usage
-🔹 BERT — Adversarial Attack (TextFooler)
 
-This script (bert.py) runs a TextFooler attack on the BERT model (bert-base-uncased) using a few example texts.
+⚙️ You can install dependencies using:
 
-python bert.py
+pip install -r requirements.txt
 
+▶️ Usage
+1️⃣ Run BERT Adversarial Attack
+python bert_attack.py
 
-It:
+2️⃣ Apply Defense on BERT
+python bert_defense.py
 
-Loads the BERT model & tokenizer.
-
-Generates adversarial examples using TextFooler.
-
-Compares predictions before and after attack.
-
-Prints perturbed sentences and prediction changes.
-
-Example output:
-
-Original Text: unflinchingly eerie and furious
-Attacked Text: unflinchingly spooky and angry
-Original Prediction: 1 -> Attacked Prediction: 0
-
-🔹 BERT — Defense (Spell Correction)
-
-bertdef.py applies a spell correction defense to recover adversarially perturbed samples.
-
-python bertdef.py
+3️⃣ Run RoBERTa Attack + Defense Evaluation
+python roberta_attack.py
 
 
-This script:
+or directly run the main function:
 
-Attacks the model using TextFooler.
+python roberta_defense.py
 
-Applies a spell check correction to adversarial samples.
+📊 Evaluation Metrics
+Stage	Description	Metrics
+Original	Model on clean text	Accuracy, F1 Score
+Attacked	Model under adversarial perturbations	Accuracy drop
+Defended	Model after applying defense	Accuracy recovery
 
-Evaluates model performance before and after defense.
+Visualizations (saved under /plots):
 
-Example terminal output:
+📈 Bar plots for Accuracy & F1 Score
 
-=== Adversarial Attack Results ===
-Accuracy under attack: 54.00%
+🔲 Confusion matrices for each stage
 
-=== After Applying Defense (Spell Correction) ===
-Accuracy after defense: 76.00%
+🧪 Sample Results
+Model	Stage	Accuracy	F1 Score
+BERT	Original	94.5%	0.94
+BERT	Attacked	62.3%	0.59
+BERT	Defended	83.1%	0.81
+RoBERTa	Original	95.1%	0.95
+RoBERTa	Attacked	68.4%	0.63
+RoBERTa	Defended	87.2%	0.85
 
-🔹 RoBERTa — Full Attack + Defense Pipeline
+(Values illustrative — update with your actual results.)
 
-roberta.py implements a comprehensive robustness evaluation:
+🧰 Logging & Outputs
 
-Loads textattack/roberta-base-SST-2
+Logs: saved in attack_defense.log
 
-Attacks 100 examples from the GLUE-SST2 dataset
+Attack details: attack_log.csv
 
-Applies combined defense (spell + synonym correction)
+Detailed results: attack_results.csv
 
-Evaluates and logs:
+Plots: saved under /plots/
 
-Accuracy
+🧭 Future Work
 
-F1 Score
+Expand to other attacks like DeepWordBug or BAE.
 
-Confusion matrices
+Implement adversarial training for fine-tuned robustness.
 
-Saves:
-
-Plots under plots/
-
-CSV results under attack_results.csv
-
-Run:
-
-python roberta.py
-
-
-Sample log output:
-
-INFO - original_accuracy: 0.92
-INFO - attacked_accuracy: 0.58
-INFO - defended_accuracy: 0.80
-INFO - Results saved to attack_results.csv
-INFO - Plots saved to plots/ directory
-
-🔹 RoBERTa — Simple Defense (Synonym Replacement)
-
-robdef.py performs a lightweight defense pass:
-
-Uses WordNet to find synonyms for corrupted words.
-
-Replaces unrecognized tokens with semantic alternatives.
-
-Evaluates restored predictions vs. original ones.
-
-python robdef.py
-
-
-Example:
-
-Original Accuracy: 60.00%
-Defended Accuracy: 82.00%
-
-📊 Example Results
-Model	Clean Accuracy	Under Attack	After Defense	Defense Type
-BERT	90%	54%	76%	Spell Correction
-RoBERTa	92%	58%	80%	Spell + Synonym (Hybrid)
-📈 Generated Outputs
-File	Description
-attack_log.csv	Detailed adversarial logs
-attack_results.csv	Summarized metrics and predictions
-plots/metrics.png	Accuracy & F1 across stages
-plots/confusion_matrices.png	Model confusion matrices before/after attack
-attack_defense.log	Experiment log file
-🔒 Notes on Large Files
-
-Model checkpoints (.pt, .safetensors, etc.) are not stored in this repo.
-If you wish to reproduce the training or fine-tuning:
-
-Download pretrained models from Hugging Face.
-
-Store checkpoints locally or with Git LFS if needed.
-
-.gitignore already excludes:
-
-checkpoints/
-results/
-*.pt
-*.safetensors
-
-📌 Future Improvements
-
-Add additional attacks: PWWS, DeepWordBug, HotFlip
-
-Explore contextual defenses (e.g., paraphrasing, ensemble validation)
-
-Extend to multi-class datasets (IMDB, AG News)
-
-Automate hyperparameter tuning for defense strategies
-
-✍️ Author
-
-Chinmay
-GitHub: @Chinmay-26
-
-Robustness Testing in NLP Project (7th Semester)
-
-🧾 License
-
-MIT License (or whichever you choose)
+Extend framework to multilingual NLP models.
